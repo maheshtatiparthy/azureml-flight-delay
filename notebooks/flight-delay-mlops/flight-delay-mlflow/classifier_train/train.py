@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import mlflow
 import mlflow.azureml
 import seaborn as sns
+import argparse
 
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
@@ -35,8 +36,7 @@ def split_dataset(X_raw, Y):
 
     return X_train, X_test, Y_train, Y_test, A_train, A_test 
 
-def prepareDataset(X_raw):
-    df = X_raw.to_pandas_dataframe()
+def prepareDataset(df):
     Y = df['ArrDelay15'].values
     synth_df = df.drop(columns=['ArrDelay15'])
     return synth_df, Y
@@ -44,20 +44,20 @@ def prepareDataset(X_raw):
 def analyze_model(clf, X_test, Y_test, preds):
     with mlflow.start_run() as run:
         accuracy = accuracy_score(Y_test, preds)
-        print(f'Accuracy', np.float(accuracy))
-        mlflow.log_metric(f'Accuracy', np.float(accuracy))
+        print(f'Accuracy', float(accuracy))
+        mlflow.log_metric(f'Accuracy', float(accuracy))
 
         precision = precision_score(Y_test, preds, average="macro")
-        print(f'Precision', np.float(precision))
-        mlflow.log_metric(f'Precision', np.float(precision))
+        print(f'Precision', float(precision))
+        mlflow.log_metric(f'Precision', float(precision))
         
         recall = recall_score(Y_test, preds, average="macro")
-        print(f'Recall', np.float(recall))
-        mlflow.log_metric(f'Recall', np.float(recall))
+        print(f'Recall', float(recall))
+        mlflow.log_metric(f'Recall', float(recall))
         
         f1score = f1_score(Y_test, preds, average="macro")
-        print(f'F1 Score', np.float(f1score))
-        mlflow.log_metric(f'F1 Score', np.float(f1score))
+        print(f'F1 Score', float(f1score))
+        mlflow.log_metric(f'F1 Score', float(f1score))
         
         mlflow.sklearn.log_model(clf, artifact_path="outputs", registered_model_name="fd_model_mlflow_proj")
         
@@ -88,11 +88,15 @@ def analyze_model(clf, X_test, Y_test, preds):
 # az ml job create -f train.yml
 
 if __name__ == "__main__":
-    
-    mlflow.autolog.sklearn()
-    data = argparse(weather).to_pandas_dataframe()
 
-    synth_df, Y = prepareDataset(tabular)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--data", type=str, help="input data path")
+    args = parser.parse_args()
+
+    mlflow.sklearn.autolog()
+    data = pd.read_csv(args.data + "/flightdelayweather_ds_clean.csv")
+
+    synth_df, Y = prepareDataset(data)
 
     #Split dataset
     X_train, X_test, Y_train, Y_test, A_train, A_test = split_dataset(synth_df, Y)

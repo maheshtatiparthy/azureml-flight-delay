@@ -44,20 +44,20 @@ def prepareDataset(df):
 def analyze_model(clf, X_test, Y_test, preds):
     with mlflow.start_run() as run:
         accuracy = accuracy_score(Y_test, preds)
-        print(f'Accuracy', np.float(accuracy))
-        mlflow.log_metric(f'Accuracy', np.float(accuracy))
+        print(f'Accuracy', float(accuracy))
+        mlflow.log_metric(f'Accuracy', float(accuracy))
 
         precision = precision_score(Y_test, preds, average="macro")
-        print(f'Precision', np.float(precision))
-        mlflow.log_metric(f'Precision', np.float(precision))
+        print(f'Precision', float(precision))
+        mlflow.log_metric(f'Precision', float(precision))
         
         recall = recall_score(Y_test, preds, average="macro")
-        print(f'Recall', np.float(recall))
-        mlflow.log_metric(f'Recall', np.float(recall))
+        print(f'Recall', float(recall))
+        mlflow.log_metric(f'Recall', float(recall))
         
         f1score = f1_score(Y_test, preds, average="macro")
-        print(f'F1 Score', np.float(f1score))
-        mlflow.log_metric(f'F1 Score', np.float(f1score))
+        print(f'F1 Score', float(f1score))
+        mlflow.log_metric(f'F1 Score', float(f1score))
         
         mlflow.sklearn.log_model(clf, artifact_path="outputs", registered_model_name="fd_model_mlflow_proj")
         
