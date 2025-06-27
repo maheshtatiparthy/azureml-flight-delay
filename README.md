@@ -25,6 +25,12 @@ This button will launch the "Custom Deployment from a Template" experience in th
 
 In case you already have an Azure Machine Learning workspace, you can setup the necessary datasets and upload the notebooks into your existing workspace.
 
+### Environment variables
+
+The `docker/run.py` script expects the following environment variables to be set before execution:
+
+- `ACR_USERNAME` – Azure Container Registry username
+- `ACR_PASSWORD` – Azure Container Registry password
 
 ## Modules
 

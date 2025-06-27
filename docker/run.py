@@ -48,8 +48,8 @@ from azureml.core.runconfig import AzureContainerRegistry, DockerEnvironment, En
 
 registry = AzureContainerRegistry()
 registry.address = 'contosomanufac5523805767.azurecr.io'
-registry.username = 'contosomanufac5523805767'
-registry.password = 'RC+cx6OiEhgK8MY1rSGkkaj8eYnGncNC'
+registry.username = os.environ.get('ACR_USERNAME')
+registry.password = os.environ.get('ACR_PASSWORD')
 
 docker_config = DockerEnvironment()
 docker_config.enabled = True
