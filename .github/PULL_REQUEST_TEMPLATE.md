@@ -29,7 +29,12 @@ What kind of change does this Pull Request introduce?
 git clone [repo-address]
 cd [repo-name]
 git checkout [branch-name]
-npm install
+pip install -r requirements.txt
+```
+
+* Run format/lint checks before submitting
+```bash
+# e.g., flake8, black
 ```
 
 * Test the code
