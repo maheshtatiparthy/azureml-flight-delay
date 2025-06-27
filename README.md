@@ -25,6 +25,17 @@ This button will launch the "Custom Deployment from a Template" experience in th
 
 In case you already have an Azure Machine Learning workspace, you can setup the necessary datasets and upload the notebooks into your existing workspace.
 
+### Project configuration
+
+The file `docker/src/aml_config/project.json` specifies the workspace `Scope` and contains the Azure subscription ID. To avoid storing credentials, the repository uses a placeholder `<SUBSCRIPTION_ID>`. Replace this value before running the demo using an environment variable or a deployment script:
+
+```bash
+export AZURE_SUBSCRIPTION_ID=<your subscription id>
+sed -i "s/<SUBSCRIPTION_ID>/$AZURE_SUBSCRIPTION_ID/" docker/src/aml_config/project.json
+```
+
+Automating this substitution keeps the subscription ID out of source control.
+
 
 ## Modules
 
