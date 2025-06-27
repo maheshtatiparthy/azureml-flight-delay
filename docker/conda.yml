@@ -3,20 +3,20 @@ channels:
   - defaults
 dependencies:
   - ca-certificates=2019.1.23=0
-  - certifi=2018.11.29=py36_0
+  - certifi
   - libedit=3.1=heed3624_0
   - libffi=3.2.1=hd88cf55_4
   - libgcc-ng=8.2.0=hdf63c60_1
   - libstdcxx-ng=8.2.0=hdf63c60_1
   - ncurses=6.0=h9df7e31_2
   - openssl=1.0.2p=h14c3975_0
-  - pip=19.0.1=py36_0
-  - python=3.6.2=hca45abc_19
+  - pip
+  - python=3.8
   - readline=7.0=ha6073c6_4
-  - setuptools=40.7.3=py36_0
+  - setuptools
   - sqlite=3.23.1=he433501_0
   - tk=8.6.8=hbc83047_0
-  - wheel=0.32.3=py36_0
+  - wheel
   - xz=5.2.4=h14c3975_4
   - zlib=1.2.11=h7b6447c_3
   - pip:
@@ -37,18 +37,18 @@ dependencies:
     - azure-storage-blob==1.4.0
     - azure-storage-common==1.4.0
     - azure-storage-nspkg==3.1.0
-    - azureml-core==1.0.10
-    - azureml-defaults==1.0.10
+  - azureml-core
+  - azureml-defaults
     - backcall==0.1.0
     - backports.tempfile==1.0
     - backports.weakref==1.0.post1
     - bcrypt==3.1.6
     - bleach==3.1.0
-    - cffi==1.11.5
+    - cffi
     - chardet==3.0.4
     - colorama==0.4.1
     - contextlib2==0.5.5
-    - cryptography==2.5
+    - cryptography
     - cycler==0.10.0
     - decorator==4.3.2
     - defusedxml==0.5.0
@@ -58,8 +58,8 @@ dependencies:
     - gast==0.2.2
     - grpcio==1.18.0
     - idna==2.8
-    - ipykernel==5.1.0
-    - ipython==7.2.0
+    - ipykernel
+    - ipython
     - ipython-genutils==0.2.0
     - ipywidgets==7.4.2
     - isodate==0.6.0
@@ -84,7 +84,7 @@ dependencies:
     - nbformat==4.4.0
     - ndg-httpsclient==0.5.1
     - notebook==5.7.4
-    - numpy==1.14.5
+    - numpy==1.19.5
     - oauthlib==3.0.1
     - pandocfilters==1.4.2
     - paramiko==2.4.2
@@ -115,8 +115,8 @@ dependencies:
     - secretstorage==2.3.1
     - send2trash==1.5.0
     - six==1.12.0
-    - tensorboard==1.10.0
-    - tensorflow-gpu==1.10.0
+    - tensorboard
+    - tensorflow-gpu==2.4.1
     - termcolor==1.1.0
     - terminado==0.8.1
     - testpath==0.4.2
