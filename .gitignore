@@ -1,0 +1,13 @@
+# Standard Python ignores
+__pycache__/
+*.pyc
+.env
+venv/
+
+# Large data directories
+azureStorageFiles/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
